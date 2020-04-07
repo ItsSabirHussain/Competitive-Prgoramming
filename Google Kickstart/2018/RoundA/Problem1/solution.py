@@ -1,4 +1,4 @@
-def solve(tnum,num, do):
+def solve(tnum, num, do):
     tmp = list(str(num))
     if do == '-':
         for i in range(len(tmp)):
