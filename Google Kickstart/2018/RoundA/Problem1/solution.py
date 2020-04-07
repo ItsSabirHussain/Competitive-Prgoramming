@@ -1,4 +1,4 @@
-def solve(num, do):
+def solve(tnum,num, do):
     tmp = list(str(num))
     if do == '-':
         for i in range(len(tmp)):
@@ -6,7 +6,7 @@ def solve(num, do):
                 tmp[i] = str(int(tmp[i]) - 1)
                 for j in range(i + 1, len(tmp)):
                     tmp[j] = '8'
-        return num - int("".join(tmp))
+        return tnum - int("".join(tmp))
     if do == '+':
         for i in range(len(tmp)):
             if not int(tmp[i]) % 2 == 0:
@@ -15,21 +15,18 @@ def solve(num, do):
                         tmp[i] = str(int(tmp[i]) + 1)
                     else:
                         tmp[i - 1] = str(int(tmp[i - 1]) + 1)
-                    return solve(int(''.join(tmp)), '+')
+                    return solve(tnum, int(''.join(tmp)), '+')
                 else:
                     tmp[i] = str(int(tmp[i]) + 1)
                     for j in range(i + 1, len(tmp)):
                         tmp[j] = '0'
-        return int("".join(tmp)) - num
 
+        return int("".join(tmp)) - tnum
 
-for i in range(int(input())):
-    inp = int(input())
-    M = solve(inp, '-')
-    P = solve(inp, '+')
-    print(M)
-    print(P)
-    result = min(M, P)
-    print("Case #", end="")
-    print(i + 1, end="")
-    print(":", result)
+if __name__ == '__main__':
+    for i in range(int(input())):
+        inp = int(input())
+        M = solve(inp, inp, '-')
+        P = solve(inp, inp, '+')
+        result = min(M, P)
+        print("Case #{}: {}".format(i+1,result))
