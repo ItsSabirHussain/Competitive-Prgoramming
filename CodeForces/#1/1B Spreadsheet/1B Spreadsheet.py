@@ -39,11 +39,9 @@ for i in range(t):
                 break
         rw = s[1:tmpind]
         clmnum = int(s[tmpind:])
-        print(clmnum)
 
-        while(clmnum > 26 and clmnum % 26 == 0):
+        while(clmnum > 26 and not clmnum % 26 == 0):
             clm = clm + chr(clmnum%26)
-            print(clmnum%26)
             clmnum = clmnum - clmnum%26
         clm = clm + chr(clmnum%26)
 
