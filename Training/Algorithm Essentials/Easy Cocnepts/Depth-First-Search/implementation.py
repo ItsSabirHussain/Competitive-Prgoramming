@@ -2,6 +2,7 @@ class Node:
     def __init__(self, name):
         self.name = name
         self.childrens = []
+        self.leefanddepth = {}
 
     def addChildren(self, name):
         self.childrens.append(Node(name))
